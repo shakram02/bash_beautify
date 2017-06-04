@@ -16,7 +16,7 @@ export class ShellFormatter implements DocumentFormattingEditProvider {
         let text = document.getText()
         // Create a backup file, maybe add config for this?
         let editor = window.activeTextEditor;
-        let fs = new FormatScript();
+        let fs = new FormatScript(this.onCompleted);
         fs.format(text);
 
         // editor.edit(editorEdit => {
@@ -25,7 +25,9 @@ export class ShellFormatter implements DocumentFormattingEditProvider {
         //     }
         throw new Error("Method not implemented.");
     }
-
+    private onCompleted(formatted: string) {
+        console.log("Formatted:" + formatted);
+    }
     /**
      * Select all the document
      * @param doc Current Document
