@@ -1,16 +1,31 @@
 import { ChildProcess, spawn } from 'child_process';
-class FormatScript {
-    constructor() {
+import { notStrictEqual } from 'assert';
+import { join } from 'path';
+export class FormatScript {
+    private formatter: ChildProcess;
+
+    sendData(fileContent: string) {
+        let scriptPath = join(__dirname, "hello.py");
         // Setup stdout events and parsing
+        this.formatter = spawn('python', [scriptPath]);
+        // spawn src/ beautify_bash.py
+        notStrictEqual(this.formatter, undefined, "Couldn't start formatter script");
+        this.formatter.stdout.on('data', (data) => console.log("Stdout:" + data.toString()));
+        this.formatter.stdin.on('data', (data) => console.log("Stdin:" + data.toString()));
+        this.formatter.stderr.on('data', (data) => console.log("Stderr:" + data.toString()));
+        console.log("Sending:" + fileContent)
+        this.formatter.stdin.write(fileContent + "\n")
+        // this.formatter.kill()
     }
 
-    static format(fileContent: string): void {
+    // format(fileContent: string): void {
+    //     console.log("Formatting");
+    //     this.formatter.send(fileContent);
+    //     // this.formatter.stdin.write("\r\n");
+    // }
 
-        let process: ChildProcess = spawn('python',
-            // The script requires the "-" if called from stdin
-            ["path/to/script.py", "-"]);
-        process.stdin.write(fileContent);
-
-        throw new Error("Method not implemented.");
+    private onOut(data: string | Buffer) {
+        let dataStr = data.toString();
+        console.log(dataStr);
     }
 }

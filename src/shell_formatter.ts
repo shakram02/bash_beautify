@@ -6,6 +6,8 @@ import {
     FormattingOptions
 } from 'vscode';
 
+import { FormatScript } from './format_script';
+
 export class ShellFormatter implements DocumentFormattingEditProvider {
     private file_validator: (path: string) => boolean;
 
@@ -14,6 +16,9 @@ export class ShellFormatter implements DocumentFormattingEditProvider {
         let text = document.getText()
         // Create a backup file, maybe add config for this?
         let editor = window.activeTextEditor;
+        let fs = new FormatScript();
+        fs.sendData(text);
+
         // editor.edit(editorEdit => {
         //     for (let i = 0; i < ranges.length; i++) {
         //         editorEdit.replace(ranges[i], edits[i]);
