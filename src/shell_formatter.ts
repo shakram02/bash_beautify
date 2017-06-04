@@ -17,7 +17,7 @@ export class ShellFormatter implements DocumentFormattingEditProvider {
         // Create a backup file, maybe add config for this?
         let editor = window.activeTextEditor;
         let fs = new FormatScript();
-        fs.sendData(text);
+        fs.format(text);
 
         // editor.edit(editorEdit => {
         //     for (let i = 0; i < ranges.length; i++) {
