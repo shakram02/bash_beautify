@@ -1,24 +1,23 @@
-import { ChildProcess, spawn } from 'child_process';
+import { ChildProcess, spawn } from 'child-process-promise';
 import { notStrictEqual } from 'assert';
 import { join } from 'path';
 import { EOL } from 'os';
 export class FormatScript {
     private formatter: ChildProcess;
-    private onComplete;
+    data: string;
+    err: string;
 
-    constructor(onFormatComplete: (x: string) => void) {
-        this.onComplete = onFormatComplete;
-    }
-
-    format(fileContent: string): void {
+    format(fileContent: string): Promise<string> {
         let scriptPath = join(__dirname, "hello.py");
         // Setup stdout events and parsing
-        this.formatter = spawn('python', [scriptPath, "-"]);
-        notStrictEqual(this.formatter, undefined, "Couldn't start formatter script");
-        this.formatter.stdout.on('data', this.onComplete);
-        this.formatter.stderr.on('data', (data) => console.log("Stderr:" + data.toString()));
-        this.formatter.stdin.write(fileContent);
-        this.formatter.stdin.end()
-    }
+        let promise = spawn('python', [scriptPath, "-"]);
+        this.formatter = promise.childProcess;
+        this.formatter.stdout.on('data', (data) => this.data = data.toString());
+        this.formatter.stderr.on('data', (data) => this.err = data.toString());
 
+        this.formatter.stdin.write(fileContent);
+        this.formatter.stdin.end();
+
+        return promise;
+    }
 }
