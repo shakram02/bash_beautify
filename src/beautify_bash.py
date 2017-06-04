@@ -141,21 +141,33 @@ class BeautifyBash:
                 'File %s: error: indent/outdent mismatch: %d.\n' % (path, tab))
         return '\n'.join(output), error
 
-    def beautify_stdin(self):
+    def beautify_file(self, path):
         error = False
-        data = sys.stdin.read()
-        result, error = self.beautify_string(data, '(stdin)')
-        sys.stdout.write(result)
+        if(path == '-'):
+            data = sys.stdin.read()
+            result, error = self.beautify_string(data, '(stdin)')
+            sys.stdout.write(result)
+        else:  # named file
+            data = self.read_file(path)
+            result, error = self.beautify_string(data, path)
+            if(data != result):
+                # make a backup copy
+                self.write_file(path + '~', data)
+                self.write_file(path, result)
         return error
 
     def main(self):
         error = False
         sys.argv.pop(0)
-        error |= self.beautify_stdin()
+        if(len(sys.argv) < 1):
+            sys.stderr.write(
+                'usage: shell script filenames or \"-\" for stdin.\n')
+        else:
+            for path in sys.argv:
+                error |= self.beautify_file(path)
         sys.exit((0, 1)[error])
 
 
 # if not called as a module
-if __name__ == '__main__':
-    sys.stdout.write("hqqello")
-    # BeautifyBash().main()
+if(__name__ == '__main__'):
+    BeautifyBash().main()
