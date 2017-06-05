@@ -4,8 +4,13 @@
     "description": "Format / Beautify bash scripts",
     "version": "0.0.1",
     "repository": {
-        "type": "git",
-        "url": "https://github.com/shakram02/shell_beautify"
+        "type": "Git",
+        "url": "https://github.com/shakram02/shell_beautify.git"
+    },
+    "author": {
+        "email": "ahmedhamdyau@gmail.com",
+        "name": "Ahmed Hamdy (shakram02)",
+        "url": "https://github.com/shakram02"
     },
     "keywords": [
         "shellscript",
@@ -17,6 +22,8 @@
         "beautifier"
     ],
     "publisher": "shakram02",
+    "license": "MIT",
+    "homepage": "https://github.com/shakram02/shell_beautify",
     "icon": "images/shell-beautify.png",
     "engines": {
         "vscode": "^1.12.0"
