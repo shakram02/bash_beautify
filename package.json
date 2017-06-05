@@ -17,12 +17,10 @@
         "url": "https://github.com/shakram02"
     },
     "keywords": [
-        "shellscript",
-        "bashscript",
+        "shell script",
+        "bash script",
         "bash",
-        "shell",
         "formatter",
-        "format",
         "beautifier"
     ],
     "publisher": "shakram02",
