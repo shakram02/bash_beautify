@@ -8,13 +8,16 @@ export class FormatScript {
     err: string;
 
     format(fileContent: string): Promise<string> {
-        let scriptPath = join(__dirname, "hello.py");
+        let scriptPath = join(__dirname, "beautify_bash.py");
         // Setup stdout events and parsing
         let promise = spawn('python', [scriptPath, "-"]);
+
+        // Setup the python process
         this.formatter = promise.childProcess;
         this.formatter.stdout.on('data', (data) => this.data = data.toString());
         this.formatter.stderr.on('data', (data) => this.err = data.toString());
 
+        // Send the text for formatting
         this.formatter.stdin.write(fileContent);
         this.formatter.stdin.end();
 

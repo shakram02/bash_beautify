@@ -143,17 +143,10 @@ class BeautifyBash:
 
     def beautify_file(self, path):
         error = False
-        if(path == '-'):
-            data = sys.stdin.read()
-            result, error = self.beautify_string(data, '(stdin)')
-            sys.stdout.write(result)
-        else:  # named file
-            data = self.read_file(path)
-            result, error = self.beautify_string(data, path)
-            if(data != result):
-                # make a backup copy
-                self.write_file(path + '~', data)
-                self.write_file(path, result)
+        data = sys.stdin.read()
+        result, error = self.beautify_string(data, '(stdin)')
+        sys.stdout.write(result)
+
         return error
 
     def main(self):
