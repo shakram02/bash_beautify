@@ -2,10 +2,14 @@
     "name": "bash-beautify",
     "displayName": "Bash Beautify",
     "description": "Format / Beautify bash scripts",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "repository": {
         "type": "Git",
         "url": "https://github.com/shakram02/shell_beautify.git"
+    },
+    "galleryBanner": {
+        "color": "#ff653b",
+        "theme": "light"
     },
     "author": {
         "email": "ahmedhamdyau@gmail.com",
