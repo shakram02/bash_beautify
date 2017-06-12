@@ -28,9 +28,9 @@ PVERSION = '1.0'
 
 class BeautifyBash:
 
-    def __init__(self):
+    def __init__(self, tab_size):
         self.tab_str = ' '
-        self.tab_size = 2
+        self.tab_size = tab_size
 
     def read_file(self, fp):
         with open(fp) as f:
@@ -153,15 +153,12 @@ class BeautifyBash:
     def main(self):
         error = False
         sys.argv.pop(0)
-        if(len(sys.argv) < 1):
-            sys.stderr.write(
-                'usage: shell script filenames or \"-\" for stdin.\n')
-        else:
-            for path in sys.argv:
-                error |= self.beautify_file(path)
+        for path in sys.argv:
+            error |= self.beautify_file(path)
         sys.exit((0, 1)[error])
 
 
 # if not called as a module
-if(__name__ == '__main__'):
-    BeautifyBash().main()
+if __name__ == '__main__':
+    tab_size = int(sys.argv[1])
+    BeautifyBash(tab_size).main()

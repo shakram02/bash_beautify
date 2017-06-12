@@ -2,13 +2,11 @@
     "name": "bash-beautify",
     "displayName": "Bash Beautify",
     "description": "Format / Beautify bash scripts",
-    "version": "0.0.3",
-    "repository": {
-        "type": "Git",
-        "url": "https://github.com/shakram02/shell_beautify"
-    },
+    "version": "0.0.5",
+    "publisher": "shakram02",
+    "repository": "https://github.com/shakram02/shell_beautify",
     "galleryBanner": {
-        "color": "#ffc73b",
+        "color": "#ff6e07",
         "theme": "dark"
     },
     "author": {
@@ -23,7 +21,6 @@
         "formatter",
         "beautifier"
     ],
-    "publisher": "shakram02",
     "license": "MIT",
     "homepage": "https://github.com/shakram02/shell_beautify",
     "icon": "images/shell-beautify.png",
