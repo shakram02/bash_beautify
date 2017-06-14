@@ -14,14 +14,13 @@ This is my first vscode extension, Please feel free to report issues, give feedb
 ### Requirements
 - Make sure to have [Python](https://www.python.org/downloads/) installed and added to `$PATH` You'll mostly have those requirements met by default if you're running Linux
 
-
 ## Features
+- Adjustable tab size by changing the value of the property from settings `bashBeautify.tabSize` the default value is 4
 
-Bash script formatting
+- Bash script formatting
 
 ![Formatting](images/formatting.gif)
 
-You can adjust the tab size by changing the value of the property `beautify.tabSize` the default value is 4
 
 # License
 Although the extension is under MIT license, the underlying python script uses GPL license. So the script should stay under GPL and re-distributed accordingly

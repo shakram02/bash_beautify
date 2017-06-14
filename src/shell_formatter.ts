@@ -26,7 +26,7 @@ export class ShellFormatter implements DocumentFormattingEditProvider {
 
         // Get the tabsize before each format attempt, to 
         // ensure using the updated value
-        let config = workspace.getConfiguration('beautify');
+        let config = workspace.getConfiguration('bashBeautify');
         let tabSize = config.tabSize;
 
         return this.script.format(text, tabSize).then(() => {

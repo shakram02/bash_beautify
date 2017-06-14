@@ -1,10 +1,13 @@
 {
     "name": "bash-beautify",
     "displayName": "Bash Beautify",
-    "description": "Format / Beautify bash scripts",
-    "version": "0.1.0",
+    "description": "Format / Beautify bash and shell scripts",
+    "version": "0.1.1",
     "publisher": "shakram02",
-    "repository": "https://github.com/shakram02/bash_beautify",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/shakram02/bash_beautify"
+    },
     "galleryBanner": {
         "color": "#ff6e07",
         "theme": "dark"
@@ -42,7 +45,7 @@
         "configuration": {
             "title": "Bash Beautify Configuration",
             "properties": {
-                "beautify.tabSize": {
+                "bashBeautify.tabSize": {
                     "type": "integer",
                     "minimum": 1,
                     "default": 4,
