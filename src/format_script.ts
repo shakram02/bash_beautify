@@ -7,11 +7,11 @@ export class FormatScript {
     data: string;
     err: string;
 
-    format(fileContent: string): Promise<string> {
+    format(fileContent: string, tabSize: number): Promise<string> {
         let scriptPath = join(__dirname, "beautify_bash.py");
-        let tab_size = 4
+
         // Setup stdout events and parsing
-        let promise = spawn('python', [scriptPath, tab_size]);
+        let promise = spawn('python', [scriptPath, tabSize]);
 
         // Setup the python process
         this.formatter = promise.childProcess;

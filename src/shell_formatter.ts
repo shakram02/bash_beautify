@@ -2,7 +2,7 @@ import {
     DocumentFormattingEditProvider,
     TextDocument, CancellationToken,
     ProviderResult, TextEdit, TextEditor, Range,
-    Position, window,
+    Position, window, workspace,
     FormattingOptions
 } from 'vscode';
 
@@ -23,8 +23,13 @@ export class ShellFormatter implements DocumentFormattingEditProvider {
         if (text.length == 0) {
             return [];
         }
-        
-        return this.script.format(text).then(() => {
+
+        // Get the tabsize before each format attempt, to 
+        // ensure using the updated value
+        let config = workspace.getConfiguration('beautify');
+        let tabSize = config.tabSize;
+
+        return this.script.format(text, tabSize).then(() => {
             // Alright, replace the document content with the formatted one
             return [TextEdit.replace(this.getFullDocRange(), this.script.data)];
         },

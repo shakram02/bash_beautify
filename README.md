@@ -9,6 +9,7 @@ It'll work with the default format keyboard binding when you edit a `.sh` file.
 * If you want a more extensive formatter check out [shell-format](https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format) it requires
 `golang` and `shfmt` installed 
 
+This is my first vscode extension, Please feel free to report issues, give feedback and request features.
 
 ### Requirements
 - Make sure to have [Python](https://www.python.org/downloads/) installed and added to `$PATH` You'll mostly have those requirements met by default if you're running Linux
@@ -20,11 +21,7 @@ Bash script formatting
 
 ![Formatting](images/formatting.gif)
 
+You can adjust the tab size by changing the value of the property `beautify.tabSize` the default value is 4
+
 # License
 Although the extension is under MIT license, the underlying python script uses GPL license. So the script should stay under GPL and re-distributed accordingly
-
-### Release Notes
-Out to the wild.
-
-### 1.0.0
-Initial release

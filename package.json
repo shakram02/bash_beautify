@@ -2,9 +2,9 @@
     "name": "bash-beautify",
     "displayName": "Bash Beautify",
     "description": "Format / Beautify bash scripts",
-    "version": "0.0.5",
+    "version": "0.1.0",
     "publisher": "shakram02",
-    "repository": "https://github.com/shakram02/shell_beautify",
+    "repository": "https://github.com/shakram02/bash_beautify",
     "galleryBanner": {
         "color": "#ff6e07",
         "theme": "dark"
@@ -22,7 +22,7 @@
         "beautifier"
     ],
     "license": "MIT",
-    "homepage": "https://github.com/shakram02/shell_beautify",
+    "homepage": "https://github.com/shakram02/bash_beautify",
     "icon": "images/shell-beautify.png",
     "engines": {
         "vscode": "^1.12.0"
@@ -38,7 +38,18 @@
                     ".sh"
                 ]
             }
-        ]
+        ],
+        "configuration": {
+            "title": "Bash Beautify Configuration",
+            "properties": {
+                "beautify.tabSize": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "default": 4,
+                    "description": "Number of spaces for a signle indnent"
+                }
+            }
+        }
     },
     "activationEvents": [
         "onLanguage:shellscript"
