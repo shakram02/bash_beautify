@@ -1,4 +1,5 @@
-# Bash beautify
+# Bash beautify [This project is no longer maintained]
+
 
 A **simple** extension that just works for shell script formatting based on [Paul Lutus - Bash Script Beautifier](https://arachnoid.com/python/beautify_bash_program.html), The underlying script doesn't do any syntax processing, Hence **simple**. It's lightweight and just needs python
 
